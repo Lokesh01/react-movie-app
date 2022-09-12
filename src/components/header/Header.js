@@ -9,7 +9,7 @@ const Header = () => {
       className="header"
       onClick={() => window.scroll(0, 0)}
     >
-      🍿 ENTERTAINMENT HUB 🎥
+      🍿 Movies Scout 🎥
     </span>
   );
 };
