@@ -5,6 +5,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import axios from "axios";
 import SingleCard from "../../components/content/SingleCard";
 import CustomPagination from "../../components/pagination/CustomPagination";
+import { debounce } from "lodash";
 
 const Search = () => {
   const [type, setType] = useState(0);
@@ -21,6 +22,12 @@ const Search = () => {
       },
     },
   });
+
+
+  //optimizing search using debouncing
+  const optimizedSearch = debounce((e) => {
+    setSearchText(e.target.value);
+  }, 500);
 
   const fetchSearch = async () => {
     try {
@@ -42,7 +49,7 @@ const Search = () => {
     window.scroll(0, 0);
     fetchSearch();
     // eslint-disable-next-line
-  }, [type, page]);
+  }, [type, page, searchText]);
 
   return (
     <div>
@@ -53,7 +60,7 @@ const Search = () => {
             className="searchBox"
             label="search"
             variant="filled"
-            onChange={(e) => setSearchText(e.target.value)}
+            onChange={(e) => optimizedSearch(e)}
           />
           <Button
             variant="contained"
@@ -73,7 +80,7 @@ const Search = () => {
             setType(newValue);
             setPage(1);
           }}
-          style={{ paddingBottom: 5}}
+          style={{ paddingBottom: 5 }}
           centered
           aria-label="disabled tabs example"
         >
