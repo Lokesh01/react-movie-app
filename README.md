@@ -16,7 +16,7 @@ Movies-Scout is a movies/tv-series recommendation web application built using tm
 Clone the project
 
 ```bash
-  git clone https://github.com/Lokesh01/chit-chat
+  git clone https://github.com/Lokesh01/react-movie-app
 ```
 
 Go to the project directory
